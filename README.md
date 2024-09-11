@@ -1,34 +1,40 @@
-# Athletic Sales Analysis
+# Data Sourcing Challenge
 
-## Project Overview
+## Overview
+This project extracts movie reviews from the **New York Times API** and movie details from **The Movie Database (TMDB) API**, merges the two datasets, and cleans the data for export into a CSV file. The final output combines movie reviews and movie metadata, including genres, spoken languages, release dates, and more.
 
-This project is focused on analyzing sales data to gain insights into the sales of women's athletic footwear across various regions, states, and cities. The analysis includes determining the total number of units sold, identifying the top-performing retailers, and finding the peak days and weeks for sales.
+## Project Workflow
+The project involves the following key steps:
 
-## Features
+1. **Access the New York Times API**:
+   - Fetch movie reviews with "love" in the headline, sectioned under "Movies" and categorized as "Reviews."
+   - Use pagination to retrieve multiple pages of reviews, store results in a list, and convert the data into a Pandas DataFrame.
 
-- **Data Filtering**: Isolate data specific to women's athletic footwear.
-- **Sales Aggregation**: Calculate total sales and units sold for each retailer, region, state, and city.
-- **Time Series Analysis**: Resample sales data to identify peak sales days and weeks.
-- **Pivot Table Analysis**: Use pivot tables to efficiently summarize and sort sales data.
+2. **Access The Movie Database (TMDB) API**:
+   - Query movie details using movie titles retrieved from the New York Times API.
+   - Extract relevant fields such as genres, languages, runtime, popularity, etc., and store results in a DataFrame.
 
-## Technologies Used
+3. **Merge and Clean the Data**:
+   - Merge the reviews and movie metadata on the `title` column.
+   - Clean the columns containing lists (e.g., genres, spoken languages) by removing brackets and quotation marks.
+   - Drop unnecessary columns (e.g., `byline.person`) and remove duplicate rows.
 
-- **Python**: Programming language used for data analysis.
-- **Pandas**: Python library for data manipulation and analysis.
-- **Jupyter Notebook**: (Optional) For interactive data analysis and visualization.
-- **Markdown**: For documentation.
+4. **Export to CSV**:
+   - Save the final cleaned dataset to a CSV file.
 
-## File Structure
+## Prerequisites
 
-- `data/`: Directory containing the sales data (e.g., `athletic_sales_2020.csv`, `athletic_sales_2021.csv`).
-- `analysis.ipynb`: Jupyter Notebook containing the analysis code.
-- `README.md`: This file, providing an overview and instructions for the project.
+Before running this script, ensure you have the following installed:
+- Python 3.x
+- The required Python packages (install via `pip`):
+  - `requests`
+  - `pandas`
+  - `python-dotenv`
+  - `fuzzywuzzy` (optional, for fuzzy matching)
 
-## Setup Instructions
+## Getting Started
 
-### Prerequisites
-
-Ensure you have Python and Pandas installed. You can install Pandas using pip:
-
+### 1. Clone the repository
 ```bash
-pip install pandas
+git clone https://github.com/your-username/data-sourcing-challenge.git
+cd data-sourcing-challenge
